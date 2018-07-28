@@ -1,1 +1,68 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+      *{
+          margin:0;
+          padding:0;
+          list-style: none;
+      }
+      body{
+          background: black;
+      }
+      span{
+            width:15px;
+            height:15px;
+            background:url("image/ai.png") no-repeat;
+
+            position: absolute;
+            background-size:100% 100%;
+            animation: flash 1s alternate infinite;
+      }
+
+      @keyframes flash {
+          0%{opacity: 0;}
+          100%{opacity:1;}
+      }
+      span:hover{
+          transform: scale(3,3) rotate(180deg) !important;
+          transition: all 1s;
+      }
+    </style>
+</head>
+<body>
+    <audio src="image/二郎%20-%20我已经爱上你%20(Live).mp3" autoplay="autoplay" loop="loop"></audio>
+<script>
+    window.onload = function(){
+        //求出屏幕的宽和高
+        var screenW = document.documentElement.clientWidth;
+        var screenH = document.documentElement.clientHeight;
+
+        //动态创建星星的动态
+        for(var i=0;i<100;i++){
+            //创建星星
+            var span = document.createElement('span');
+            document.body.appendChild(span);
+
+            // 随机数的坐标
+            var x = parseInt(Math.random() * screenW);
+            var y = parseInt(Math.random() * screenH);
+
+            span.style.left = x + 'px';
+            span.style.top = y + 'px';
+
+            //随机缩放
+            var scale = Math.random() * 1.5;
+            span.style.transform = 'scale('+ scale +','+scale+')';
+
+            //频率
+            var rate = Math.random() * 1.5;
+            span.style.animationDelay = rate + 's';
+        }
+    }
+</script>
+</body>
+</html>
